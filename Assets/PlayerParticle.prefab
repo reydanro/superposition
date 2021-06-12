@@ -5312,7 +5312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721730750891680163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5342,7 +5342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6644898180575845228}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5373,7 +5373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346649711882775585}
   - component: {fileID: 1683382571708772388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5486,7 +5486,7 @@ GameObject:
   - component: {fileID: 1122445379011259586}
   - component: {fileID: 1855625306175134571}
   - component: {fileID: 8654703145537623509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5602,7 +5602,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1079
+    m_Bits: 1207
   m_GroundCheck: {fileID: 6644898180575845228}
   m_CeilingCheck: {fileID: 721730750891680163}
   m_CrouchDisableCollider: {fileID: 0}
