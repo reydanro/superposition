@@ -5,25 +5,11 @@ using UnityEngine;
 
 public class LevelControl : MonoBehaviour
 {
-    public int goalCount;
-    private bool[] goalStates;
-    // Start is called before the first frame update
-    void Start()
-    {
-        goalStates = new bool[goalCount];
-    }
+    public GoalController[] goals;
 
-    // Update is called once per frame
-    void Update()
+    public void OnGoalStateDidUpdate(GoalController goal)
     {
-        
-    }
-
-    public void UpdateGoalState(int goalIndex, bool state)
-    {
-        goalStates[goalIndex] = state;
-
-        if (!Array.Exists(goalStates, state => state == false))
+        if (!Array.Exists(goals, goal => goal.isTriggered == false))
         {
             Debug.Log("You beat the level");
             GlobalControl.Instance.GotoNextLevel();

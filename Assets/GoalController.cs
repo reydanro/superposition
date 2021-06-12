@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class GoalController : MonoBehaviour
 {
+    public bool isTriggered;
 
-    public int index;
     private LevelControl lc;
-    // Start is called before the first frame update
+
     void Start()
     {
         lc = GameObject.Find("LevelMaster").GetComponent<LevelControl>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -21,11 +20,13 @@ public class GoalController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        lc.UpdateGoalState(index, true);
+        isTriggered = true;
+        lc.OnGoalStateDidUpdate(this);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        lc.UpdateGoalState(index, false);
+        isTriggered = false;
+        lc.OnGoalStateDidUpdate(this);
     }
 }
