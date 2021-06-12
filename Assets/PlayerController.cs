@@ -8,13 +8,20 @@ public class PlayerController : MonoBehaviour
 
     public const int X_FORCE_WHILE_JUMPING = 1;
 
-    public const int JUMP_FORCE = 400;
+    public const int JUMP_FORCE = 6;
 
-    public const int MAX_VELOCITY = 5;
+    public const int MAX_VELOCITY_X = 5;
 
     public Rigidbody2D rb;
 
-    private bool isJumping = true;
+    private Vector2 X_FORCE_VEC_RIGHT = new Vector2(X_FORCE, 0);
+    private Vector2 X_FORCE_VEC_LEFT = new Vector2(-X_FORCE, 0);
+    private Vector2 X_FORCE_JUMPING_VEC_RIGHT = new Vector2(X_FORCE_WHILE_JUMPING, 0);
+    private Vector2 X_FORCE_JUMPING_VEC_LEFT = new Vector2(-X_FORCE_WHILE_JUMPING, 0);
+    private Vector2 JUMP_FORCE_VEC = new Vector2(0, JUMP_FORCE);
+
+    private bool isJumping = false;
+    private bool isColliding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,41 +29,37 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isColliding = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isColliding = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (rb.velocity.y == 0)
+        if (rb.velocity.x <= MAX_VELOCITY_X && Input.GetKey(KeyCode.D))
         {
-            this.isJumping = false;
+            Vector2 force = isJumping ? X_FORCE_JUMPING_VEC_RIGHT : X_FORCE_VEC_RIGHT;
+            rb.AddForce(force);
+            
+        }
+        else if (rb.velocity.x >= -MAX_VELOCITY_X && Input.GetKey(KeyCode.A))
+        {
+            Vector2 force = isJumping ? X_FORCE_JUMPING_VEC_LEFT : X_FORCE_VEC_LEFT;
+            rb.AddForce(force);
         }
 
-        if (rb.velocity.x <= MAX_VELOCITY && Input.GetKey(KeyCode.D))
+        if (!isJumping && isColliding && Input.GetKeyDown(KeyCode.W))
         {
-            if (this.isJumping)
-            {
-                rb.AddForce(new Vector2(X_FORCE_WHILE_JUMPING, 0));
-            }
-            else
-            {
-                rb.AddForce(new Vector2(X_FORCE, 0));
-            }
-        }
-        else if (rb.velocity.x >= -MAX_VELOCITY && Input.GetKey(KeyCode.A))
-        {
-            if (this.isJumping)
-            {
-                rb.AddForce(new Vector2(-X_FORCE_WHILE_JUMPING, 0));
-            }
-            else
-            {
-                rb.AddForce(new Vector2(-X_FORCE, 0));
-            }
-        }
-
-        if (!this.isJumping && Input.GetKeyDown(KeyCode.W))
-        {
-            this.isJumping = true;
-            rb.AddForce(new Vector2(0, JUMP_FORCE));
+            rb.AddForce(JUMP_FORCE_VEC, ForceMode2D.Impulse);
+            isJumping = true;
+        } else if (isColliding) {
+            isJumping = false;
         }
     }
 }
