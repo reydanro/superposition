@@ -13,6 +13,9 @@ public class GlobalControl : MonoBehaviour
     {
         if (Instance == null)
         {
+            levels = new LinkedList<string>(LEVEL_LIST);
+            Debug.Log(gameObject.scene.name);
+            currentLevel = levels.Find(gameObject.scene.name);
             DontDestroyOnLoad(gameObject);
             Instance = this;
         }
@@ -25,8 +28,7 @@ public class GlobalControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levels = new LinkedList<string>(LEVEL_LIST);
-        currentLevel = levels.First;
+
     }
 
     // Update is called once per frame

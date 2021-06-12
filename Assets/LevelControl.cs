@@ -19,7 +19,7 @@ public class LevelControl : MonoBehaviour
         
     }
 
-    void UpdateGoalState(int goalIndex, bool state)
+    public void UpdateGoalState(int goalIndex, bool state)
     {
         goalStates[goalIndex] = state;
 
