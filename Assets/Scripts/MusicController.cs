@@ -20,7 +20,22 @@ public class MusicController : MonoBehaviour
         }
         else if (Instance != this)
         {
-            Destroy(gameObject);
+            AudioSource newMusic = GetComponent<AudioSource>();
+
+            if (Instance.music.clip.ToString() != newMusic.clip.ToString())
+            {
+
+                Instance.music.Stop();
+                Destroy(Instance);
+                DontDestroyOnLoad(transform.gameObject);
+                newMusic.Play();
+                Instance = this;
+            }
+            else
+            {
+
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -33,12 +48,6 @@ public class MusicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string scene = SceneManager.GetActiveScene().name;
 
-        if (scene == "Level 4")
-        {
-            music.Stop();
-            Destroy(this);
-        }
     }
 }
