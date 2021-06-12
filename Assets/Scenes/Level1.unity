@@ -450,6 +450,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3664187458121973293, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664187458121973293, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664187458121973293, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.764151
+      objectReference: {fileID: 0}
     - target: {fileID: 3664187458121973295, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
       propertyPath: m_Name
       value: LevelBorder
