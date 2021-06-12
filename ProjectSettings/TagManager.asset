@@ -20,7 +20,7 @@ TagManager:
   - 
   - Borders
   - 
-  - 
+  - Lasers
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 2673383883
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3595858849
+    locked: 0
+  - name: Lasers
+    uniqueID: 4165993355
+    locked: 0
+  - name: Effects
+    uniqueID: 1103537047
     locked: 0
