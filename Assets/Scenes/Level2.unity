@@ -716,7 +716,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Particles are <color=red>entangled</color>.
+  m_Text: 'Particles are <color=red>entangled</color>.
+
+    They must enter <color=red>superposition</color>
+    simultaneously to <color=red>join together</color>.'
 --- !u!222 &678393715
 CanvasRenderer:
   m_ObjectHideFlags: 0

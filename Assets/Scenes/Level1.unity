@@ -469,7 +469,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press A and D to <color=red>move</color>. W to <color=red>drift</color>.
+  m_Text: 'Press A and D to <color=red>move</color>. W to <color=red>jump</color>.
+
+    Enter
+    the goal to reach <color=red>superposition</color>.'
 --- !u!222 &1557750887
 CanvasRenderer:
   m_ObjectHideFlags: 0
