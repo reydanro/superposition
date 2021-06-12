@@ -43,6 +43,6 @@ public class CameraController : MonoBehaviour
         }
 
         cam.orthographicSize = Mathf.Max((max.x - min.x) * Screen.height / Screen.width / 2, (max.y - min.y) / 2) + 0.5f;
-        cam.transform.position = (max + min) / 2;
+        cam.transform.position = new Vector3((max.x + min.x) / 2, (max.y + min.y) / 2, transform.position.z);
     }
 }
