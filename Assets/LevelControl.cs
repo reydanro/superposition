@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LevelControl : MonoBehaviour
 {
+    private float playerHealth = 100;
     public GoalController[] goals;
 
     public void OnGoalStateDidUpdate(GoalController goal)
@@ -16,4 +17,13 @@ public class LevelControl : MonoBehaviour
         }
     }
 
+    public void DealPlayerDamage(DamageObstacle obstacle, float damage)
+    {
+        playerHealth -= damage;
+        Debug.Log("Health="+playerHealth);
+        if (playerHealth <= 0)
+        {
+            Debug.LogWarning("Player Died!!!!");
+        }
+    }
 }
