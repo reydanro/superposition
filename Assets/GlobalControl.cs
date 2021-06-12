@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GlobalControl : MonoBehaviour
 {
     private string[] LEVEL_LIST = { "Title", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6" };
+    private const string DEATH_LEVEL = "DEATH";
     public static GlobalControl Instance;
     private LinkedList<string> levels;
     private LinkedListNode<string> currentLevel;
@@ -49,9 +50,16 @@ public class GlobalControl : MonoBehaviour
         }
     }
 
-    public void RestartLevel()
+    public void HandleDeath()
     {
-        Debug.Assert(currentLevel != null);
-        SceneManager.LoadScene(currentLevel.Value);
+        string failedLevel = currentLevel.Value;
+        SceneManager.LoadScene(DEATH_LEVEL);
+        StartCoroutine(RestartLevel(failedLevel));
+    }
+
+    IEnumerator<UnityEngine.WaitForSecondsRealtime> RestartLevel(string level)
+    {
+        yield return new WaitForSecondsRealtime(0.6f);
+        SceneManager.LoadScene(level);
     }
 }

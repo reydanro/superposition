@@ -24,7 +24,7 @@ public class LevelControl : MonoBehaviour
         if (playerHealth <= 0)
         {
             Debug.LogWarning("Player Died!!!!");
-            GlobalControl.Instance.RestartLevel();
+            GlobalControl.Instance.HandleDeath();
         }
     }
 }

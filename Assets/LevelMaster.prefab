@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98856bd2c1a449479e728cba5c01913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalCount: 4
+  goals: []
