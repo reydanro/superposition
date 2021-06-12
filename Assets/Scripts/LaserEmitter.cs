@@ -8,7 +8,7 @@ public class LaserEmitter : MonoBehaviour
     public float maxLength = 10;
 
     private LineRenderer line;
-    private ParticleSystem particles;
+    private Transform endVfx;
     private BoxCollider2D collider;
 
     void Start()
@@ -18,10 +18,10 @@ public class LaserEmitter : MonoBehaviour
 
         collider = GetComponent<BoxCollider2D>();
 
-        particles = transform.Find("Particle System").GetComponent<ParticleSystem>();
+        endVfx = transform.Find("EndVFX");
     }
 
-    void Update()
+    void LateUpdate()
     {
         Vector3 maxEndPoint = transform.position + (transform.right * maxLength);
         RaycastHit2D hit = Physics2D.Linecast(transform.position, maxEndPoint, ~LayerMask.GetMask("Player", "Lasers", "Goal"));
@@ -36,17 +36,17 @@ public class LaserEmitter : MonoBehaviour
 
 
         // Update particle system
-        if (particles != null)
+        if (endVfx != null)
         {
             if (hit != null && Array.Exists(new string[] { "Ground", "Borders" }, layer => hit.collider.gameObject.layer == LayerMask.NameToLayer(layer)))
             {
-                particles.gameObject.SetActive(true);
-                particles.transform.position = endPoint;
-                particles.transform.rotation = Quaternion.FromToRotation(hit.collider.transform.forward, hit.normal);
+                endVfx.gameObject.SetActive(true);
+                endVfx.transform.position = endPoint;
+                //endVfx.transform.rotation = Quaternion.FromToRotation(hit.collider.transform.forward, hit.normal);
             }
             else
             {
-                particles.gameObject.SetActive(false);
+                endVfx.gameObject.SetActive(false);
 
             }
         }
