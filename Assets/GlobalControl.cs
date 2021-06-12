@@ -48,4 +48,10 @@ public class GlobalControl : MonoBehaviour
             Debug.Log("You win!");
         }
     }
+
+    public void RestartLevel()
+    {
+        Debug.Assert(currentLevel != null);
+        SceneManager.LoadScene(currentLevel.Value);
+    }
 }
