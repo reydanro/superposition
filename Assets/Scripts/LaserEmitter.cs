@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,7 @@ public class LaserEmitter : MonoBehaviour
     void Update()
     {
         Vector3 maxEndPoint = transform.position + (transform.right * maxLength);
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, maxEndPoint, ~LayerMask.GetMask("Player", "Lasers"));
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, maxEndPoint, ~LayerMask.GetMask("Player", "Lasers", "Goal"));
         Vector3 endPoint = hit != null ? (Vector3)hit.point : maxEndPoint;
 
         Vector3[] newPointsInLine = new Vector3[2];
@@ -37,7 +38,7 @@ public class LaserEmitter : MonoBehaviour
         // Update particle system
         if (particles != null)
         {
-            if (hit != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            if (hit != null && Array.Exists(new string[] { "Ground", "Borders" }, layer => hit.collider.gameObject.layer == LayerMask.NameToLayer(layer)))
             {
                 particles.gameObject.SetActive(true);
                 particles.transform.position = endPoint;

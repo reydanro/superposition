@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5450855650350623994}
   - component: {fileID: 5450855650350623995}
   - component: {fileID: 5450855650350623972}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd82cad21d984b799d43b35e11839e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  isTriggered: 0
