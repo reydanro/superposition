@@ -9,7 +9,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(LoadScene1);
+        GetComponent<Button>().onClick.AddListener(GlobalControl.Instance.GotoNextLevel);
     }
 
     // Update is called once per frame
@@ -18,8 +18,4 @@ public class StartGame : MonoBehaviour
         
     }
 
-    public void LoadScene1()
-    {
-        SceneManager.LoadScene("1Level");
-    }
 }
