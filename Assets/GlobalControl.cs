@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GlobalControl : MonoBehaviour
 {
-    private string[] LEVEL_LIST = { "Title", "Level1", "Level2", "Level3", "Level4" };
+    private string[] LEVEL_LIST = { "Title", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6" };
     public static GlobalControl Instance;
     private LinkedList<string> levels;
     private LinkedListNode<string> currentLevel;
