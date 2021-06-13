@@ -6,21 +6,26 @@ public class CameraController : MonoBehaviour
 {
     private Camera cam;
 
-    public Transform[] markersToFit;
+    private ArrayList markersToFit = new ArrayList();
 
     void Start()
     {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("CameraMarker"))
+        {
+            markersToFit.Add(obj.transform);
+        }
+
         cam = GetComponent<Camera>();
     }
 
     private void LateUpdate()
     {
-        if (markersToFit.Length == 0)
+        if (markersToFit.Count == 0)
         {
             return;
         }
-        Vector2 min = markersToFit[0].position;
-        Vector2 max = markersToFit[0].position;
+        Vector2 min = ((Transform)markersToFit[0]).position;
+        Vector2 max = ((Transform)markersToFit[0]).position;
 
         foreach (Transform t in markersToFit)
         {   

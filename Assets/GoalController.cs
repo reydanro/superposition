@@ -10,6 +10,7 @@ public class GoalController : MonoBehaviour
 
     void Start()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
         lc = GameObject.Find("LevelMaster").GetComponent<LevelControl>();
     }
 
