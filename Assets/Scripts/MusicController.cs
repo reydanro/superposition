@@ -29,6 +29,7 @@ public class MusicController : MonoBehaviour
                 Destroy(Instance);
                 DontDestroyOnLoad(transform.gameObject);
                 newMusic.Play();
+                music = newMusic;
                 Instance = this;
             }
             else
