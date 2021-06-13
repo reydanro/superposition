@@ -180,7 +180,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75801167}
-  - component: {fileID: 75801166}
   - component: {fileID: 75801165}
   - component: {fileID: 75801164}
   - component: {fileID: 75801163}
@@ -207,7 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interior: 1
   outline: 2
-  polygonCollider2D: {fileID: 0}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
   lineRenderer: {fileID: 0}
@@ -362,38 +360,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75801161}
   m_Mesh: {fileID: 0}
---- !u!60 &75801166
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75801161}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.42054677, y: 0.80018234}
-      - {x: 0.41978544, y: -0.3113471}
-      - {x: 0.7804597, y: -0.5902841}
-      - {x: 1.2207147, y: -0.5995918}
-      - {x: 1.8196771, y: -0.60290134}
-      - {x: 2.1476102, y: 0.18203335}
-      - {x: 1.1183634, y: 0.80579233}
 --- !u!4 &75801167
 Transform:
   m_ObjectHideFlags: 0

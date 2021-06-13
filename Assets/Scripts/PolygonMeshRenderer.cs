@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-[RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(LineRenderer))]
@@ -14,12 +14,14 @@ public class PolygonMeshRenderer : MonoBehaviour
     public Interior interior = Interior.Filled;
     public Outline outline = Outline.Closed;
 
-    public PolygonCollider2D polygonCollider2D;
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     public LineRenderer lineRenderer;
     public bool isWorldSpaceUV;
     public bool isOutlineClosed = true;
+
+    private Vector2[] localPoints;
+    private Bounds bounds; //In world space
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +35,16 @@ public class PolygonMeshRenderer : MonoBehaviour
         
     }
 
-    public void Refresh()
+    public void Refresh(Vector2[] points)
     {
-        CreateMesh();
+        this.localPoints = points;
+        
+        CreateMesh(points);
         CreateLine();
     }
 
-    void CreateMesh()
+    void CreateMesh(Vector2[] points)
     {
-        if (polygonCollider2D == null) polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
         if (meshFilter == null) meshFilter = GetComponent<MeshFilter>();
         if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
         if ((meshFilter == null || meshRenderer == null) && interior == Interior.None) return;
@@ -68,10 +71,10 @@ public class PolygonMeshRenderer : MonoBehaviour
 
 
         //Render thing
-        int pointCount = 0;
-        pointCount = polygonCollider2D.GetTotalPointCount();
+        Bounds pointBounds = VectorUtils.ComputeBoundsFromPoints(points.Select(p => transform.TransformPoint(p)).ToArray());
+
+        int pointCount = points.Length;
         Mesh mesh = new Mesh();
-        Vector2[] points = polygonCollider2D.points;
         Vector3[] vertices = new Vector3[pointCount];
         Vector2[] uv = new Vector2[pointCount];
         for (int j = 0; j < pointCount; j++)
@@ -85,7 +88,7 @@ public class PolygonMeshRenderer : MonoBehaviour
             }
             else
             {
-                uv[j] = new Vector2(actual.x / polygonCollider2D.bounds.size.x, actual.y / polygonCollider2D.bounds.size.y);
+                uv[j] = new Vector2(actual.x / pointBounds.size.x, actual.y / pointBounds.size.y);
             }
         }
         Triangulator tr = new Triangulator(points);
@@ -98,7 +101,7 @@ public class PolygonMeshRenderer : MonoBehaviour
 
     void CreateLine()
     {
-        if (polygonCollider2D == null) polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
+        //if (polygonCollider2D == null) polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
         if (lineRenderer == null) lineRenderer = GetComponent<LineRenderer>();
 
         if (lineRenderer == null && outline == Outline.None) return;
@@ -118,25 +121,25 @@ public class PolygonMeshRenderer : MonoBehaviour
         }
 
         //Render thing
-        int pointCount = 0;
-        pointCount = polygonCollider2D.GetTotalPointCount();
+        int pointCount = localPoints.Length;
+        //pointCount = polygonCollider2D.GetTotalPointCount();
         if (pointCount < 1) return;
 
-        if (outline == Outline.Closed) pointCount++;
-        Vector2[] points = polygonCollider2D.points;
+        int loopClose = 0;
+        if (outline == Outline.Closed)
+            loopClose++;
+        //Vector2[] points = polygonCollider2D.points;
 
-        lineRenderer.positionCount = pointCount;
+        lineRenderer.positionCount = pointCount + loopClose;
 
-        for (int j = 0; j < polygonCollider2D.GetTotalPointCount(); j++)
+        for (int j = 0; j < pointCount; j++)
         {
-            Vector2 actual = points[j];
-            lineRenderer.SetPosition(j, new Vector3(actual.x, actual.y, 0));
+            lineRenderer.SetPosition(j, (Vector3)localPoints[j]);
         }
 
         if (outline == Outline.Closed)
         {
-            Vector2 actual = points[0];
-            lineRenderer.SetPosition(pointCount - 1, new Vector3(actual.x, actual.y, 0));
+            lineRenderer.SetPosition(pointCount, (Vector3)localPoints[0]);
         }
     }
 }

@@ -8,18 +8,13 @@ using Path = System.Collections.Generic.List<ClipperLib.IntPoint>;
 using Paths = System.Collections.Generic.List<System.Collections.Generic.List<ClipperLib.IntPoint>>;
 
 
-[RequireComponent(typeof(PolygonCollider2D))]
 public class PolyJoin : MonoBehaviour
 {
 	public int precision = 10000;
 
-	private PolygonCollider2D polyCollider;
-
     // Start is called before the first frame update
     void Start()
     {
-		polyCollider = GetComponent<PolygonCollider2D>();
-
 		Paths subj = new Paths();
 
 		foreach (BoxCollider2D bc in GetComponentsInChildren<BoxCollider2D>())
@@ -74,22 +69,11 @@ public class PolyJoin : MonoBehaviour
 			//}
 			//Debug.Log("LocalPoints:" + s);
 
-            polyCollider.points = localPoints;
-
+			GetComponent<PolygonMeshRenderer>().Refresh(localPoints);
 
 			break;
 		}
 
-		GetComponent<PolygonMeshRenderer>().Refresh();
-
-		polyCollider.enabled = false;
-
-	}
-
-	// Update is called once per frame
-	void Update()
-    {
-		
 	}
 
 }
