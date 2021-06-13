@@ -184,7 +184,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 09f38a0b5529c4323b1e1da29c39ccf2, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 50
     m_Alignment: 4
@@ -207,7 +207,13 @@ MonoBehaviour:
 
     Sound effects from mixkit.co.
 
-    Pixel art by fridaruiz.'
+    Pixel art by fridaruiz.
+
+
+    All
+    other music and graphics created during the
+
+    GMTK 2021 Game Jam.'
 --- !u!222 &676600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -273,6 +279,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cf620218a8294add8e706aa186c39c1, type: 3}
+--- !u!1001 &552910305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423912, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241327896891423913, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f2e2506650cd42109066c07fc8b227c, type: 3}
+    - target: {fileID: 3241327896891423926, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
+      propertyPath: m_Name
+      value: BackgroundMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f8f21930ad32441f083da6f12a16a453, type: 3}
 --- !u!20 &638437837 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4802690090186368424, guid: 1cf620218a8294add8e706aa186c39c1, type: 3}

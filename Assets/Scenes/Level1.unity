@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Text: 'Press A and D to <color=red>move</color>. W to <color=red>jump</color>.
     R to <color=red>restart</color>.
 
-    Enter the <color=red>collider</color> to
+    Enter the <color=lime>vortex</color> to
     reach <color=red>superposition</color>.'
 --- !u!222 &1557750887
 CanvasRenderer:
