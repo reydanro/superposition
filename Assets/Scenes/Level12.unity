@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialRotationDirection: 1
-  rotationSpeed: 40
+  rotationSpeed: 35
   rotationDegrees: 90
 --- !u!1001 &639984979
 PrefabInstance:
@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialRotationDirection: 1
-  rotationSpeed: 50
+  rotationSpeed: 45
   rotationDegrees: 90
 --- !u!1001 &1241696976
 PrefabInstance:
