@@ -207,13 +207,14 @@ MonoBehaviour:
 
     Sound effects from mixkit.co.
 
-    Pixel art by fridaruiz.
+    Pixel art by fridaruiz
+    and 0x72.
 
 
-    All
-    other music and graphics created during the
+    All other music and graphics created during the
 
-    GMTK 2021 Game Jam.'
+    GMTK 2021
+    Game Jam.'
 --- !u!222 &676600
 CanvasRenderer:
   m_ObjectHideFlags: 0
