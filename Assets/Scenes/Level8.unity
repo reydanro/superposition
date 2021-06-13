@@ -451,6 +451,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3664187458121973293, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664187458121973293, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664187458121973293, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6415094
+      objectReference: {fileID: 0}
     - target: {fileID: 3664187458121973295, guid: 5d1632bd315ff4fbaa63c4465f908af9, type: 3}
       propertyPath: m_Name
       value: LevelBorder
@@ -712,14 +724,6 @@ PrefabInstance:
     - target: {fileID: 5450855650350623993, guid: 276bf139a262b4f2baa68911632a6ec7, type: 3}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5450855650350623993, guid: 276bf139a262b4f2baa68911632a6ec7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.40811515
-      objectReference: {fileID: 0}
-    - target: {fileID: 5450855650350623993, guid: 276bf139a262b4f2baa68911632a6ec7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5450855650350623993, guid: 276bf139a262b4f2baa68911632a6ec7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1010,7 +1014,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990046178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f779d5c63eb54ee1998474d6990de6d, type: 3}
   m_Name: 
