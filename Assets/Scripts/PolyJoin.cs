@@ -32,19 +32,19 @@ public class PolyJoin : MonoBehaviour
 
 			Vector3[] worldPoints = corners.Select(v => bc.transform.TransformPoint(bc.offset + v)).ToArray();
 			Path path = worldPoints.Select(v => new IntPoint(v.x * precision, v.y * precision)).ToList();
-
-            string s = "";
-            foreach (IntPoint ip in path)
-            {
-                s += "(" + ip.X + "," + ip.Y + "),";
-            }
-            Debug.Log("Adding box from " + bc.gameObject.name + ": " + s);
             subj.Add(path);
 
-			bc.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            bc.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+            //string s = "";
+            //foreach (IntPoint ip in path)
+            //{
+            //    s += "(" + ip.X + "," + ip.Y + "),";
+            //}
+            //Debug.Log("Adding box from " + bc.gameObject.name + ": " + s);
         }
 
-		Paths solution = new Paths();
+        Paths solution = new Paths();
 
 		Clipper c = new Clipper();
 		c.AddPaths(subj, PolyType.ptSubject, true);
@@ -52,25 +52,25 @@ public class PolyJoin : MonoBehaviour
 		c.Execute(ClipType.ctUnion, solution, PolyFillType.pftPositive, PolyFillType.pftPositive);
 
 
-        Debug.Log("Computed union into " + solution.Count+" paths");
-		foreach (Path path in solution)
+        Debug.Log("Computed union into " + solution.Count + " paths");
+        foreach (Path path in solution)
 		{
             GameObject pathObject = Instantiate(pathPrefab);
             pathObject.transform.parent = transform;
 
-            string s = "";
-            foreach (IntPoint ip in path)
-            {
-                s += "(" + ip.X + "," + ip.Y + "),";
-            }
-            Debug.Log("IntPoints:" + s);
+            //string s = "";
+            //foreach (IntPoint ip in path)
+            //{
+            //    s += "(" + ip.X + "," + ip.Y + "),";
+            //}
+            //Debug.Log("IntPoints:" + s);
 
             Vector2[] worldPoints = path.Select(point => new Vector2((float)point.X / precision, (float)point.Y / precision)).ToArray();
-            s = "";
-            foreach (Vector2 ip in worldPoints)
-            {
-                s += "(" + ip.x + "," + ip.y + "),";
-            }
+            //s = "";
+            //foreach (Vector2 ip in worldPoints)
+            //{
+            //    s += "(" + ip.x + "," + ip.y + "),";
+            //}
 
             pathObject.GetComponent<PolygonMeshRenderer>().Refresh(worldPoints);
 		}
