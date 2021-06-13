@@ -35,7 +35,7 @@ public class GlobalControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape) && Application.platform != RuntimePlatform.WebGLPlayer)
         {
             Debug.Log("Quitting");
             Application.Quit();
@@ -44,6 +44,11 @@ public class GlobalControl : MonoBehaviour
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(currentLevel.Value);
+        }
+
+        if (Input.GetKey(KeyCode.Return) && currentLevel.Value == "Title")
+        {
+            GotoNextLevel();
         }
     }
 
