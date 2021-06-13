@@ -647,9 +647,10 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Press A and D to <color=red>move</color>. W to <color=red>jump</color>.
+    R to <color=red>restart</color>.
 
-    Enter
-    the <color=red>collider</color> to reach <color=red>superposition</color>.'
+    Enter the <color=red>collider</color> to
+    reach <color=red>superposition</color>.'
 --- !u!222 &1557750887
 CanvasRenderer:
   m_ObjectHideFlags: 0

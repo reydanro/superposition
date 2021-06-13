@@ -57,6 +57,7 @@ public class LevelControl : MonoBehaviour
                     Time.timeScale = 1.0f;
 
                     GlobalControl.Instance.GotoNextLevel();
+                    isVictoryAnimation = false;
                     return;
                 }
             }
