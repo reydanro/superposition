@@ -14,7 +14,7 @@ public class LevelControl : MonoBehaviour
 
     public void Start()
     {
-        cameraBoundingMarkers = Array.FindAll<Transform>(Camera.main.GetComponentsInChildren<Transform>(), component => component.name.StartsWith("Marker"));
+        cameraBoundingMarkers = Array.FindAll<Transform>(GameObject.FindObjectsOfType<Transform>(), component => component.name.StartsWith("Marker"));
     }
     public void OnGoalStateDidUpdate(GoalController goal)
     {
