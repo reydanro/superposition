@@ -25,7 +25,7 @@ public class LaserEmitter : MonoBehaviour
     {
         Vector3 maxEndPoint = transform.position + (transform.right * maxLength);
         RaycastHit2D hit = Physics2D.Linecast(transform.position, maxEndPoint, ~LayerMask.GetMask("Player", "Lasers", "Goal"));
-        Vector3 endPoint = hit != null ? (Vector3)hit.point : maxEndPoint;
+        Vector3 endPoint = hit.collider != null ? (Vector3)hit.point : maxEndPoint;
 
         //Debug.Log("Hit test: " + hit.collider.name + " - endPoint: " + endPoint);
 
@@ -40,7 +40,7 @@ public class LaserEmitter : MonoBehaviour
         // Update particle system
         if (endVfx != null)
         {
-            if (hit != null && Array.Exists(new string[] { "Ground", "Borders" }, layer => hit.collider.gameObject.layer == LayerMask.NameToLayer(layer)))
+            if (hit.collider != null && Array.Exists(new string[] { "Ground", "Borders" }, layer => hit.collider.gameObject.layer == LayerMask.NameToLayer(layer)))
             {
                 endVfx.gameObject.SetActive(true);
                 endVfx.transform.position = endPoint;
@@ -54,7 +54,7 @@ public class LaserEmitter : MonoBehaviour
         }
 
         // Update collider
-        if (hit != null)
+        if (hit.collider != null)
         {
             var length = Vector3.Distance(transform.position, endPoint);
             collider.offset = new Vector2(length / 2, 0);
