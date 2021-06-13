@@ -12,6 +12,8 @@ public class PolyJoin : MonoBehaviour
 {
 	public int precision = 10000;
 
+    public GameObject pathPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,7 @@ public class PolyJoin : MonoBehaviour
 
 		foreach (BoxCollider2D bc in GetComponentsInChildren<BoxCollider2D>())
         {
-			//Debug.Log("Adding box with offset=" + bc.offset + ", size=" + bc.size);
-			var halfsize = bc.size / 2;
+            var halfsize = bc.size / 2;
 			Vector2[] corners = 
 			{
 				-halfsize,
@@ -31,13 +32,14 @@ public class PolyJoin : MonoBehaviour
 
 			Vector3[] worldPoints = corners.Select(v => bc.transform.TransformPoint(bc.offset + v)).ToArray();
 			Path path = worldPoints.Select(v => new IntPoint(v.x * precision, v.y * precision)).ToList();
-			//string s = "";
-			//foreach (IntPoint ip in path)
-   //         {
-			//	s += "(" + ip.X + "," + ip.Y + "),";
-   //         }
-			//Debug.Log("IntPoints:"+s);
-			subj.Add(path);
+
+            string s = "";
+            foreach (IntPoint ip in path)
+            {
+                s += "(" + ip.X + "," + ip.Y + "),";
+            }
+            Debug.Log("Adding box from " + bc.gameObject.name + ": " + s);
+            subj.Add(path);
 
 			bc.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
@@ -50,28 +52,27 @@ public class PolyJoin : MonoBehaviour
 		c.Execute(ClipType.ctUnion, solution, PolyFillType.pftPositive, PolyFillType.pftPositive);
 
 
-		//Debug.Log("Computed union");
+        Debug.Log("Computed union into " + solution.Count+" paths");
 		foreach (Path path in solution)
 		{
-			//string s = "";
-			//foreach (IntPoint ip in path)
-			//{
-			//	s += "(" + ip.X + "," + ip.Y + "),";
-			//}
-			//Debug.Log("IntPoints:" + s);
-			Vector2[] worldPoints = path.Select(point => new Vector2((float)point.X / precision, (float)point.Y / precision)).ToArray();
-			Vector2[] localPoints = worldPoints.Select(point => (Vector2)transform.InverseTransformPoint(point)).ToArray();
+            GameObject pathObject = Instantiate(pathPrefab);
+            pathObject.transform.parent = transform;
 
-			//s = "";
-			//foreach (Vector2 ip in localPoints)
-			//{
-			//	s += "(" + ip.x + "," + ip.y + "),";
-			//}
-			//Debug.Log("LocalPoints:" + s);
+            string s = "";
+            foreach (IntPoint ip in path)
+            {
+                s += "(" + ip.X + "," + ip.Y + "),";
+            }
+            Debug.Log("IntPoints:" + s);
 
-			GetComponent<PolygonMeshRenderer>().Refresh(localPoints);
+            Vector2[] worldPoints = path.Select(point => new Vector2((float)point.X / precision, (float)point.Y / precision)).ToArray();
+            s = "";
+            foreach (Vector2 ip in worldPoints)
+            {
+                s += "(" + ip.x + "," + ip.y + "),";
+            }
 
-			break;
+            pathObject.GetComponent<PolygonMeshRenderer>().Refresh(worldPoints);
 		}
 
 	}

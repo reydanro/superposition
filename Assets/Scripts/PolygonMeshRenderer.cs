@@ -20,8 +20,9 @@ public class PolygonMeshRenderer : MonoBehaviour
     public bool isWorldSpaceUV;
     public bool isOutlineClosed = true;
 
+    private Vector2[] worldPoints;
     private Vector2[] localPoints;
-    private Bounds bounds; //In world space
+    private Bounds pointBounds; //In world space
 
     // Start is called before the first frame update
     void Start()
@@ -35,15 +36,17 @@ public class PolygonMeshRenderer : MonoBehaviour
         
     }
 
-    public void Refresh(Vector2[] points)
+    public void Refresh(Vector2[] worldPoints)
     {
-        this.localPoints = points;
-        
-        CreateMesh(points);
+        this.worldPoints = worldPoints;
+        localPoints = worldPoints.Select(point => (Vector2)transform.InverseTransformPoint(point)).ToArray();
+        pointBounds = VectorUtils.ComputeBoundsFromPoints(worldPoints);
+
+        CreateMesh();
         CreateLine();
     }
 
-    void CreateMesh(Vector2[] points)
+    void CreateMesh()
     {
         if (meshFilter == null) meshFilter = GetComponent<MeshFilter>();
         if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
@@ -69,17 +72,13 @@ public class PolygonMeshRenderer : MonoBehaviour
             meshRenderer.enabled = true;
         }
 
-
-        //Render thing
-        Bounds pointBounds = VectorUtils.ComputeBoundsFromPoints(points.Select(p => transform.TransformPoint(p)).ToArray());
-
-        int pointCount = points.Length;
+        int pointCount = localPoints.Length;
         Mesh mesh = new Mesh();
         Vector3[] vertices = new Vector3[pointCount];
         Vector2[] uv = new Vector2[pointCount];
         for (int j = 0; j < pointCount; j++)
         {
-            Vector2 actual = points[j];
+            Vector2 actual = localPoints[j];
             vertices[j] = new Vector3(actual.x, actual.y, 0);
             if (isWorldSpaceUV)
             {
@@ -91,7 +90,7 @@ public class PolygonMeshRenderer : MonoBehaviour
                 uv[j] = new Vector2(actual.x / pointBounds.size.x, actual.y / pointBounds.size.y);
             }
         }
-        Triangulator tr = new Triangulator(points);
+        Triangulator tr = new Triangulator(localPoints);
         int[] triangles = tr.Triangulate();
         mesh.vertices = vertices;
         mesh.uv = uv;
