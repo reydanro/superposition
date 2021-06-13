@@ -21,6 +21,7 @@ public class LevelControl : MonoBehaviour
         if (!Array.Exists(goals, goal => goal.isTriggered == false))
         {
             Debug.Log("You beat the level");
+            GameObject.Find("Canvas").GetComponent<Canvas>().enabled = false;
             GetComponent<AudioSource>().Play();
             isVictoryAnimation = true;
         }
