@@ -69,6 +69,8 @@ public class LevelControl : MonoBehaviour
 
             foreach (Transform player in players)
             {
+                player.GetComponent<Rigidbody2D>().gravityScale = 0f;
+
                 if (player.position.x != 0 || player.position.y != 0)
                 {
                     player.position = Vector3.MoveTowards(player.position, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 10)), step);
