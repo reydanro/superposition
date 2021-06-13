@@ -353,6 +353,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1683382571708772388, guid: 1298f5510f9424a03be9f24d4fa98014, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683382571708772388, guid: 1298f5510f9424a03be9f24d4fa98014, type: 3}
+      propertyPath: m_BlendStyleIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683382571708772388, guid: 1298f5510f9424a03be9f24d4fa98014, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683382571708772388, guid: 1298f5510f9424a03be9f24d4fa98014, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 9018261985174785804, guid: 1298f5510f9424a03be9f24d4fa98014, type: 3}
       propertyPath: m_RootOrder
       value: 10
