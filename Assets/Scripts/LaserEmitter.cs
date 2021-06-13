@@ -27,7 +27,7 @@ public class LaserEmitter : MonoBehaviour
         RaycastHit2D hit = Physics2D.Linecast(transform.position, maxEndPoint, ~LayerMask.GetMask("Player", "Lasers", "Goal"));
         Vector3 endPoint = hit != null ? (Vector3)hit.point : maxEndPoint;
 
-        Debug.Log("Hit test: " + hit.collider.name + " - endPoint: " + endPoint);
+        //Debug.Log("Hit test: " + hit.collider.name + " - endPoint: " + endPoint);
 
         Vector3[] newPointsInLine = new Vector3[2];
         newPointsInLine[0] = transform.position;
